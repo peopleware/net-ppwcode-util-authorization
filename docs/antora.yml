@@ -1,0 +1,5 @@
+name: ppwcode-util-authorization-i
+version: ~
+title: PPWCode.Util.Authorization.I
+nav:
+  - modules/ROOT/nav.adoc
