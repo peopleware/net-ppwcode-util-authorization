@@ -98,14 +98,14 @@ jobs:
         # ContinuousIntegrationBuild=true excludes full-framework
         # builds on Linux and macOS
         run: |
-          dotnet restore PPWCode.Util.Authorisation.sln \
+          dotnet restore PPWCode.Util.Authorization.sln \
             --locked-mode \
             -p:Configuration=Release
 
       - name: Build
         shell: bash
         run: |
-          dotnet build PPWCode.Util.Authorisation.sln \
+          dotnet build PPWCode.Util.Authorization.sln \
             --configuration Release \
             --no-restore \
             -p:ContinuousIntegrationBuild=true \
@@ -116,7 +116,7 @@ jobs:
       - name: Pack
         shell: bash
         run: |
-          dotnet pack PPWCode.Util.Authorisation.sln \
+          dotnet pack PPWCode.Util.Authorization.sln \
             --configuration Release \
             --no-build \
             --output ./artifacts \
@@ -128,11 +128,11 @@ jobs:
 
           # Zip all NuGet packages
           cd artifacts
-          zip -r -9 ../release-artifacts/PPWCode.Util.Authorisation.I-nuget-pkgs_${{ steps.get_version.outputs.version }}.zip *.nupkg
+          zip -r -9 ../release-artifacts/PPWCode.Util.Authorization.I-nuget-pkgs_${{ steps.get_version.outputs.version }}.zip *.nupkg
 
       - name: Upload reproduced release artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: PPWCode.Util.Authorisation.I-nuget-pkgs_${{ steps.get_version.outputs.version }}.zip
-          path: release-artifacts/PPWCode.Util.Authorisation.I-nuget-pkgs_${{ steps.get_version.outputs.version }}.zip
+          name: PPWCode.Util.Authorization.I-nuget-pkgs_${{ steps.get_version.outputs.version }}.zip
+          path: release-artifacts/PPWCode.Util.Authorization.I-nuget-pkgs_${{ steps.get_version.outputs.version }}.zip
           retention-days: 30

@@ -38,14 +38,14 @@ jobs:
       - name: Restore dependencies
         shell: bash
         run: |
-          dotnet restore PPWCode.Util.Authorisation.sln \
+          dotnet restore PPWCode.Util.Authorization.sln \
             --locked-mode \
             -p:Configuration=Release
 
       - name: Build
         shell: bash
         run: |
-          dotnet build PPWCode.Util.Authorisation.sln \
+          dotnet build PPWCode.Util.Authorization.sln \
             --configuration Release \
             --no-restore \
             -p:ContinuousIntegrationBuild=true
@@ -53,7 +53,7 @@ jobs:
       - name: Test
         shell: bash
         run: |
-          dotnet test PPWCode.Util.Authorisation.sln \
+          dotnet test PPWCode.Util.Authorization.sln \
             --configuration Release \
             --no-build \
             --verbosity normal \

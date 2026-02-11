@@ -38,14 +38,14 @@ jobs:
       - name: Restore dependencies
         shell: bash
         run: |
-          dotnet restore PPWCode.Util.Authorisation.sln \
+          dotnet restore PPWCode.Util.Authorization.sln \
             --locked-mode \
             -p:Configuration=Release
 
       - name: Build
         shell: bash
         run: |
-          dotnet build PPWCode.Util.Authorisation.sln \
+          dotnet build PPWCode.Util.Authorization.sln \
             --configuration Release \
             --no-restore \
             -p:ContinuousIntegrationBuild=true
@@ -53,7 +53,7 @@ jobs:
       - name: Test
         shell: bash
         run: |
-          dotnet test PPWCode.Util.Authorisation.sln \
+          dotnet test PPWCode.Util.Authorization.sln \
             --configuration Release \
             --no-build \
             --verbosity normal \
@@ -228,14 +228,14 @@ jobs:
         # ContinuousIntegrationBuild=true excludes full-framework
         # builds on Linux and macOS
         run: |
-          dotnet restore PPWCode.Util.Authorisation.sln \
+          dotnet restore PPWCode.Util.Authorization.sln \
             --locked-mode \
             -p:Configuration=Release
 
       - name: Build
         shell: bash
         run: |
-          dotnet build PPWCode.Util.Authorisation.sln \
+          dotnet build PPWCode.Util.Authorization.sln \
             --configuration Release \
             --no-restore \
             -p:ContinuousIntegrationBuild=true \
@@ -246,7 +246,7 @@ jobs:
       - name: Pack
         shell: bash
         run: |
-          dotnet pack PPWCode.Util.Authorisation.sln \
+          dotnet pack PPWCode.Util.Authorization.sln \
             --configuration Release \
             --no-build \
             --output ./artifacts \
@@ -277,18 +277,18 @@ jobs:
           cd release-artifacts
 
           # Zip test and coverage raw per OS
-          zip -r -9 PPWCode.Util.Authorisation.I-test-output-raw_Linux_${{ steps.get_version.outputs.version }}.zip test-and-coverage-raw-Linux/
-          zip -r -9 PPWCode.Util.Authorisation.I-test-output-raw_macOS_${{ steps.get_version.outputs.version }}.zip test-and-coverage-raw-macOS/
-          zip -r -9 PPWCode.Util.Authorisation.I-test-output-raw_Windows_${{ steps.get_version.outputs.version }}.zip test-and-coverage-raw-Windows/
+          zip -r -9 PPWCode.Util.Authorization.I-test-output-raw_Linux_${{ steps.get_version.outputs.version }}.zip test-and-coverage-raw-Linux/
+          zip -r -9 PPWCode.Util.Authorization.I-test-output-raw_macOS_${{ steps.get_version.outputs.version }}.zip test-and-coverage-raw-macOS/
+          zip -r -9 PPWCode.Util.Authorization.I-test-output-raw_Windows_${{ steps.get_version.outputs.version }}.zip test-and-coverage-raw-Windows/
 
           # Zip coverage HTML per OS
-          zip -r -9 PPWCode.Util.Authorisation.I-coverage-report-html_Linux_${{ steps.get_version.outputs.version }}.zip coverage-report-html-Linux/
-          zip -r -9 PPWCode.Util.Authorisation.I-coverage-report-html_macOS_${{ steps.get_version.outputs.version }}.zip coverage-report-html-macOS/
-          zip -r -9 PPWCode.Util.Authorisation.I-coverage-report-html_Windows_${{ steps.get_version.outputs.version }}.zip coverage-report-html-Windows/
+          zip -r -9 PPWCode.Util.Authorization.I-coverage-report-html_Linux_${{ steps.get_version.outputs.version }}.zip coverage-report-html-Linux/
+          zip -r -9 PPWCode.Util.Authorization.I-coverage-report-html_macOS_${{ steps.get_version.outputs.version }}.zip coverage-report-html-macOS/
+          zip -r -9 PPWCode.Util.Authorization.I-coverage-report-html_Windows_${{ steps.get_version.outputs.version }}.zip coverage-report-html-Windows/
 
           # Zip all NuGet packages
           cd ../artifacts
-          zip -r -9 ../release-artifacts/PPWCode.Util.Authorisation.I-nuget-pkgs_${{ steps.get_version.outputs.version }}.zip *.nupkg
+          zip -r -9 ../release-artifacts/PPWCode.Util.Authorization.I-nuget-pkgs_${{ steps.get_version.outputs.version }}.zip *.nupkg
 
       - name: Create GitHub Release
         if: steps.get_version.outputs.is_prerelease == 'false'
@@ -297,6 +297,6 @@ jobs:
           files: |
             release-artifacts/*.zip
           generate_release_notes: false
-          name: PPWCode.Util.Authorisation.I ${{ steps.get_version.outputs.version }}
+          name: PPWCode.Util.Authorization.I ${{ steps.get_version.outputs.version }}
           body_path: release_body.md
           fail_on_unmatched_files: true
