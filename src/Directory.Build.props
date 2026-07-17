@@ -23,7 +23,7 @@
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/peopleware/net-ppwcode-util-authorization.git</RepositoryUrl>
 
-        <PackageTags>ppwcode util authorization dotnetcore netcore</PackageTags>
+        <PackageTags>ppwcode util authorization dotnetcore netcore gen5</PackageTags>
         <PackageProjectUrl>https://github.com/peopleware/net-ppwcode-util-authorization</PackageProjectUrl>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
